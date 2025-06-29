@@ -1,0 +1,133 @@
+<% layout("layouts/boilerPlate") -%>
+<div class="row mt-3">
+  <h1 class="col-6 offset-3  text-dark mt-3 mb-3 p-3 rounded heading">Sign-up on LocalConnect</h1>
+  <div class="col-6 offset-3">
+    <form action="/signup" method="POST" class="needs-validation" novalidate>
+      <div class="mb-3">
+        <label for="fullName" class="form-label">Full Name</label>
+        <input
+          name="fullName"
+          id="fullName"
+          type="text"
+          class="form-control"
+          placeholder="ANUJ DHIRENDRASINH CHAUHAN"
+          required
+          oninput="autoGenerateUsername()"
+        />
+      </div>
+      <div>
+        <label for="username" class="form-label">Username</label>
+        <input
+        name="username"
+        id="username"
+        type="text"
+        class="form-control"
+        placeholder="ANUJ DHIRENDRASINH CHAUHAN"
+        required readonly 
+      />
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input
+          name="email"
+          id="email"
+          type="email"
+          placeholder="anuj@gmail.com"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Create Password</label>
+        <input
+          name="password"
+          id="password"
+          type="password"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="birthDate" class="form-label">Birthdate</label>
+        <input
+          name="birthDate"
+          id="birthDate"
+          type="date"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="currentResidence" class="form-label"
+          >Current Residence Address</label
+        >
+        <input
+          name="currentResidence"
+          id="currentResidence"
+          type="text"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="localAddress" class="form-label">Local Address</label>
+        <input
+          name="localAddress"
+          id="localAddress"
+          type="text"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="mobileNumber" class="form-label">Mobile Number</label>
+        <input
+          name="mobileNumber"
+          id="mobileNumber"
+          type="text"
+          placeholder="0123456789"
+          pattern="[0-9]{10}"
+          class="form-control"
+          required
+        />
+        <small class="text-muted">Enter 10-digit mobile number</small>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Documents</label>
+        <div class="input-group mb-2">
+          <select name="documents[0][type]" class="form-select">
+            <option value="">Select Document Type</option>
+            <option value="Aadhar Card">Aadhar Card</option>
+            <option value="PAN Card">PAN Card</option>
+            <option value="Voter ID">Voter ID</option>
+            <option value="Passport">Passport</option>
+            <option value="Driving License">Driving License</option>
+          </select>
+          <input
+            type="text"
+            name="documents[0][documentNumber]"
+            class="form-control"
+            placeholder="Document Number"
+          />
+        </div>
+      </div>
+
+      <button class="btn btn-success btn-Hover">Sign Up</button>
+    </form>
+  </div>
+</div>
+
+<script>
+    function autoGenerateUsername() {
+        const fullName = document.getElementById("fullName").value.trim().toLowerCase().replace(/\s+/g, "");
+        const randomNum = Math.floor(100 + Math.random() * 900); // 3-digit random
+        document.getElementById("username").value = fullName + randomNum;
+    }
+</script>
+
